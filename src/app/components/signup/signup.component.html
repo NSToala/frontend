@@ -1,0 +1,31 @@
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+      <!-- Tabs Titles -->
+  
+      <!-- Icon -->
+      <div class="fadeIn first my-3">
+        <img src="https://cdn4.iconfinder.com/data/icons/logos-and-brands/512/21_Angular_logo_logos-128.png" id="icon" alt="User Icon" />
+      </div>
+  
+      <!-- Signup Form -->
+      <form #signupForm="ngForm" (ngSubmit)="signup(signupForm)">
+        <div class="mb-5">(*) Todos los campos son obligatorios!</div>
+        
+        <input type="email"  class="fadeIn second" name="email" 
+        [(ngModel)]="authService.user.email"   placeholder="user@example.com" required>
+        
+        <input type="password"  class="fadeIn third" name="password" 
+        [(ngModel)]="authService.user.password"   placeholder="password" required>
+        
+        <select class="form-select roles" [(ngModel)]="authService.user.roles" name="roles">
+          <option [ngValue]="item" *ngFor="let item of roles">{{item}}</option>
+        </select>
+        <input type="submit" class="fadeIn fourth" value="registrarse">
+      </form>
+      <!-- Remind Passowrd -->
+      <div id="formFooter">
+        ¿Tienes una cuenta? <a class="underlineHover" routerLink="/signin" >Inicia sesión</a>
+      </div>
+  
+    </div>
+</div>
