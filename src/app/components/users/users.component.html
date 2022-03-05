@@ -1,5 +1,5 @@
 <app-nav-drawer></app-nav-drawer>
-{{this.authService.admin}}
+
 <div class="container mt-5" *ngIf="this.authService.admin">
   <input type="text" name="autocomplete" (keyup)="autocomplete($event)" 
     [(ngModel)]="authService.autocomplete"
