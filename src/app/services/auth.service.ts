@@ -9,7 +9,9 @@ import { UserResponse } from '../models/userResponse';
 export class AuthService {
   URL_API = 'http://localhost:3000/api'
   user: User
+  autocomplete: string = ''
   Users: UserResponse[]
+  admin: boolean = false
   
   constructor( private http: HttpClient ) {
     this.user = {email: '', password: '', roles: 'usuario'}
@@ -26,7 +28,11 @@ export class AuthService {
 
   getUsers(token: string) {
     const headers = { 'x-access-token': token}
-    console.log(headers)
     return this.http.get(`${this.URL_API}/users`, { 'headers': headers })
+  }
+
+  filter(token: string) {
+    const headers = { 'x-access-token': token}
+    return this.http.get(`${this.URL_API}/users/autocomplete/${this.autocomplete}`, { 'headers': headers })
   }
 }

@@ -38,7 +38,10 @@ export class SigninComponent implements OnInit {
             form.reset()
             this.router.navigate(['/users'])
           },
-          err => console.error(err)
+          (err:any) => {
+            form.reset()
+            alert(err.error?.message)
+          }
         )
       } else {
         alert("Correo electrónico no válido!")
